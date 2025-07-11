@@ -12,7 +12,11 @@ function LoginForm() {
   async function handleLogin(e) {
     e.preventDefault();
     try {
-      const res = await axios.post("/info/login", { email, password });
+      const res = await axios.post(
+        "/info/login",
+        { email, password },
+        { withCredentials: true }
+      );
       console.log("Login success:", res.data);
       if (res.data.success) {
         console.log("Hey");

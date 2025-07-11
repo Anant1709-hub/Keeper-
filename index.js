@@ -8,6 +8,7 @@ import passport from "passport";
 import { Strategy } from "passport-local";
 import env from "dotenv";
 import GoogleStrategy from "passport-google-oauth2";
+import cors from "cors";
 
 const app = express();
 const port = 5000;
@@ -60,8 +61,23 @@ async function checkinghash(user_in_password, hashedpass) {
   }
 }
 
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    credentials: true,
+  })
+);
+
 app.get("/", (req, res) => {
   app.render("./public/index.html");
+});
+
+app.get("/main", (req, res) => {
+  if (req.isAuthenticated()) {
+    res.json({ loggedIn: true, user: req.user });
+  } else {
+    res.json({ loggedIn: false });
+  }
 });
 
 app.post("/info/signup", async (req, res) => {
