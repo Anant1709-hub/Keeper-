@@ -3,6 +3,8 @@ import Particles from "../components/Particles";
 import Navbar from "../components/Navbar";
 import AboutSection from "../components/AboutSection";
 import FeaturesSection from "../components/FeaturesSection";
+import ContactSection from "../components/ContactSection";
+import Footer from "../components/Footer";
 
 function Home() {
   return (
@@ -30,6 +32,8 @@ function Home() {
       <Navbar />
       <AboutSection />
       <FeaturesSection />
+      <ContactSection />
+      <Footer />
     </div>
   );
 }

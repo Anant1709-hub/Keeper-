@@ -20,10 +20,7 @@ function AboutSection() {
           </p>
         </div>
         <div className="about-visual">
-          <img
-            src="/assets/notes-illustration.png"
-            alt="Note taking illustration"
-          />
+          <button className="get-started-btn">Get Started</button>
         </div>
       </div>
     </section>
