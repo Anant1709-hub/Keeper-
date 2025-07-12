@@ -1,18 +1,23 @@
 import React, { useState } from "react";
 import "../styles.css";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function SignUp() {
   const [name, getName] = useState("");
   const [email, getEmail] = useState("");
   const [password, getPassword] = useState("");
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   async function handleSign(e) {
     e.preventDefault();
     try {
       const res = await axios.post("/info/signup", { name, email, password });
       console.log("Signup success:", res.data);
+      if (res.data.success) {
+        navigate("/main");
+      }
     } catch (error) {
       setError(error.response?.data?.message || "SignUp failed");
       console.log("SignUp error");
@@ -62,6 +67,12 @@ function SignUp() {
             Sign Up
           </button>
           {error && <p style={{ color: "red" }}>{error}</p>}
+          <p className="form-footer-text">
+            Already have an account?{" "}
+            <a href="/login" className="form-footer-link">
+              Login
+            </a>
+          </p>
         </form>
       </div>
     </div>

@@ -16,7 +16,7 @@ function Navbar() {
           <a href="#contact">Contact</a>
         </li>
         <li>
-          <a className="cta" href="/notes">
+          <a className="cta" href="/main">
             My Notes
           </a>
         </li>
@@ -25,7 +25,7 @@ function Navbar() {
         <a href="/login" className="auth-btn">
           Login
         </a>
-        <a href="/register" className="auth-btn register">
+        <a href="/signup" className="auth-btn register">
           Register
         </a>
       </div>

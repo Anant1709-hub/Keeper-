@@ -19,7 +19,6 @@ function LoginForm() {
       );
       console.log("Login success:", res.data);
       if (res.data.success) {
-        console.log("Hey");
         navigate("/main");
       }
     } catch (error) {

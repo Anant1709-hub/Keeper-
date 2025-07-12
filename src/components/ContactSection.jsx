@@ -3,7 +3,7 @@ import "../home.css";
 
 function ContactSection() {
   return (
-    <section className="contact-section">
+    <section className="contact-section" id="contact">
       <div className="contact-container">
         <h2>Contact Us</h2>
         <p>We'd love to hear from you. Reach out to us using the form below.</p>

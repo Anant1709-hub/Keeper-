@@ -20,7 +20,9 @@ function AboutSection() {
           </p>
         </div>
         <div className="about-visual">
-          <button className="get-started-btn">Get Started</button>
+          <a href="/signup">
+            <button className="get-started-btn">Get Started</button>
+          </a>
         </div>
       </div>
     </section>
