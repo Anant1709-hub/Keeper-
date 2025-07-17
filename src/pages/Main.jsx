@@ -7,6 +7,7 @@ function Main() {
   const [notes, setNotes] = useState([]);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [deleted_notes, setDeleted_notes] = useState([]);
 
   useEffect(() => {
     async function fetchNotes() {
@@ -23,6 +24,8 @@ function Main() {
 
     fetchNotes();
   }, []);
+
+  useEffect(() => {}, [notes]);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -43,6 +46,10 @@ function Main() {
     } catch (error) {
       console.log("Error in fetching notes from the backend");
     }
+  }
+
+  function handleDelete(id) {
+    setNotes(notes.filter((prevnote) => prevnote.filter()));
   }
 
   return (
@@ -69,11 +76,23 @@ function Main() {
         </button>
       </form>
 
-      <div className="notes-display">
+      <div className="notes-display flex flex-wrap justify-center gap-5 mt-10">
         {notes.map((note) => (
-          <div key={note.id} className="note-card">
-            <h3>{note.title}</h3>
-            <p>{note.content}</p>
+          <div
+            key={note.id}
+            className="relative bg-white/5 border border-white/10 rounded-xl p-5 w-72 text-left shadow-lg"
+          >
+            <button
+              onClick={() => handleDelete(note.id)}
+              className="absolute top-3 right-3 bg-cyan-700 hover:bg-cyan-600 text-white text-xs px-2 py-1 rounded transition-all duration-200"
+            >
+              Delete
+            </button>
+
+            <h3 className="text-xl font-semibold mb-2 text-white pr-10 break-words">
+              {note.title}
+            </h3>
+            <p className="text-gray-300 break-words">{note.content}</p>
           </div>
         ))}
       </div>
