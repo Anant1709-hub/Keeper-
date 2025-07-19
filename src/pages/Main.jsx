@@ -49,7 +49,7 @@ function Main() {
   }
 
   function handleDelete(id) {
-    setNotes(notes.filter((prevnote) => prevnote.filter()));
+    
   }
 
   return (

@@ -12,15 +12,17 @@ import cors from "cors";
 import { Pool } from "pg";
 import connectPgSimple from "connect-pg-simple";
 const app = express();
-const port = 5000;
-const saltRounds = 10;
+env.config();
+const port = process.env.PORT;
+
+const saltRounds = process.env.SALTROUNDS;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.use(express.json());
 
 const pool = new Pool({
-  connectionString: "postgresql://postgres:8721@localhost:5432/keeper",
+  connectionString: process.env.CONNECTIONSTRING,
 });
 
 const pgSession = connectPgSimple(session);
@@ -32,7 +34,7 @@ app.use(
       tableName: "session",
       createTableIfMissing: true,
     }),
-    secret: "TOPSECRET",
+    secret: process.env.SECERT,
     resave: false,
     saveUninitialized: false,
     cookie: {
@@ -46,10 +48,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 const db = new pg.Client({
-  user: "postgres",
+  user: process.env.USER,
   host: "localhost",
-  database: "keeper",
-  password: "8721",
+  database: process.env.DATABASE,
+  password: process.env.PASSWORD,
   port: 5432,
 });
 db.connect();
